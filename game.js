@@ -20,6 +20,16 @@ let speed = 6;
 const playerImage = new Image();
 playerImage.src = "assets/tung.png";
 
+const dpr = window.devicePixelRatio || 1;
+
+canvas.width = WIDTH * dpr;
+canvas.height = HEIGHT * dpr;
+
+canvas.style.width = WIDTH + "px";
+canvas.style.height = HEIGHT + "px";
+
+ctx.scale(dpr, dpr);
+
 const player = {
     x: 150,
     y: 350,
@@ -299,8 +309,8 @@ function drawGameOver() {
 
     ctx.fillText(
         "GAME OVER",
-        WIDTH / 2 - 160,
-        HEIGHT / 2
+        Math.round(WIDTH / 2 - 160),
+        Math.round(HEIGHT / 2)
     );
 
     ctx.font = "24px Arial";
